@@ -348,9 +348,6 @@ Beatriz Milz
 <li><p>Geralmente vem acompanhada de documentação.</p></li>
 <li><p>Reduz o volume na transferência de dados</p></li>
 </ul>
-<div class="footer">
-<p>Slide do curso de <a href="https://curso-r.com/cursos/web-scraping/">Web Scraping</a>, da <a href="https://curso-r.com">Curso-R</a>, ministrado por <a href="https://br.linkedin.com/in/jtrecenti">Julio Trecenti</a>.</p>
-</div>
 </section>
 <section class="slide level2">
 <h2>API</h2>
@@ -369,9 +366,6 @@ Beatriz Milz
 <li>Pode ou não possuir parâmetros para acessar as informações.</li>
 <li>O resultado geralmente vem num arquivo <strong>json</strong>.</li>
 </ul>
-<div class="footer">
-<p>Slide do curso de <a href="https://curso-r.com/cursos/web-scraping/">Web Scraping</a>, da <a href="https://curso-r.com">Curso-R</a>, ministrado por <a href="https://br.linkedin.com/in/jtrecenti">Julio Trecenti</a>.</p>
-</div>
 </section>
 <section class="slide level2">
 <h2>Como funciona uma API?</h2>
@@ -384,19 +378,39 @@ Beatriz Milz
 <ul>
 <li>R: <code>httr</code> ou <code>httr2</code>.</li>
 </ul>
-<div class="footer">
-<p>Slide do curso de <a href="https://curso-r.com/cursos/web-scraping/">Web Scraping</a>, da <a href="https://curso-r.com">Curso-R</a>, ministrado por <a href="https://br.linkedin.com/in/jtrecenti">Julio Trecenti</a>.</p>
-</div>
 </section>
 <section class="slide level2">
 <h2>Tipos de APIs</h2>
 <ul>
-<li><p><strong>APIs disponíveis</strong>: O site fornece uma forma estruturada e documentada para acessar as páginas (com ou sem necessidade de fazer login).</p></li>
+<li><p><strong>APIs disponíveis/documentadas</strong>: O site fornece uma forma estruturada e documentada para acessar as páginas (com ou sem necessidade de fazer login).</p></li>
 <li><p><strong>APIs escondidas</strong>: O site não fornece uma forma estruturada e documentada para acessar as páginas, mas internamente é alimentado por uma API não documentada, que podemos descobrir e usar.</p></li>
 </ul>
-<div class="footer">
-<p>Slide do curso de <a href="https://curso-r.com/cursos/web-scraping/">Web Scraping</a>, da <a href="https://curso-r.com">Curso-R</a>, ministrado por <a href="https://br.linkedin.com/in/jtrecenti">Julio Trecenti</a>.</p>
-</div>
+</section>
+<section class="slide level2">
+<h2>Requisições</h2>
+<ul>
+<li><p><strong>GET</strong>: Requisição para obter dados.</p></li>
+<li><p><strong>POST</strong>: Requisição que permite envio de dados (ex. parâmetros para autenticação).</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Compondo uma requisição</h2>
+<ul>
+<li>Precisamos descobrir qual URL acessar.</li>
+</ul>
+
+<img data-src="img/compondo-url.png" class="r-stretch"><p>Acesse: <a href="https://brasilapi.com.br/api/cep/v1/01310100" class="uri">https://brasilapi.com.br/api/cep/v1/01310100</a></p>
+</section>
+<section class="slide level2">
+<h2>Possíveis status</h2>
+<ul>
+<li><p><code>200</code> OK</p></li>
+<li><p><code>302</code> Redirecionado</p></li>
+<li><p><code>400</code> Requisição mal formatada</p></li>
+<li><p><code>401</code> Não autorizado</p></li>
+<li><p><code>404</code> Não encontrado</p></li>
+<li><p><code>503</code> Erro no servidor</p></li>
+</ul>
 </section>
 <section class="slide level2 middle center">
 <h2>Vamos começar?</h2>

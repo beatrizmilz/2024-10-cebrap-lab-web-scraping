@@ -27,6 +27,12 @@ date-format: 'MMMM [de] YYYY'
     -   Segunda, Quarta e Sexta: aula ao vivo, online, das 19h00 às 22h00.
     -   Terça e quinta: haverão tarefas para casa, para praticar os conceitos.
 
+## Sobre o material
+
+
+- Parte do material adaptado do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+
+
 ## Pré-requisitos
 
 -   `R` e `RStudio` instalados no seu computador:
@@ -55,11 +61,10 @@ install.packages(c(
 ## Pré-requisitos
 
 -   Conhecimento básico de `R` e `tidyverse`.
-  -   Na página do curso, indiquei alguns materiais que podem ajudar a relembrar ou aprender esses conceitos.
-  
-  
-- Esse curso não é sobre introdução ao `R`, mas sim de raspagem de dados com `R`.
 
+-   Na página do curso, indiquei alguns materiais que podem ajudar a relembrar ou aprender esses conceitos.
+
+-   Esse curso não é sobre introdução ao `R`, mas sim de raspagem de dados com `R`.
 
 ## Plano das aulas
 
@@ -85,71 +90,53 @@ O curso abordará conceitos, como:
 
 ![](img/matrix.gif){fig-align="center"}
 
-::: footer
-Slide adaptado do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-:::
-
 ## Política do web scraping
 
 ### Quando usar
 
-- Quando precisamos coletar um volume grande de dados da internet
+-   Quando precisamos coletar um volume grande de dados da internet
 
 ### Quando não usar
 
-- Existem formas mais simples de obter os dados (API, base de dados, etc.)
+-   Existem formas mais simples de obter os dados (API, base de dados, etc.)
 
-- Os termos de uso do site não nos permitem fazer isso.
+-   Os termos de uso do site não nos permitem fazer isso.
 
-- As informações do site não são públicas.
+-   As informações do site não são públicas.
 
-::: footer
-Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-:::
 
 ## Cuidados
 
-- Risco de derrubar ou comprometer a estabilidade do site.
+-   Risco de derrubar ou comprometer a estabilidade do site.
 
-- Vale à pena conversar com a entidade detentora dos dados.
+-   Vale à pena conversar com a entidade detentora dos dados.
 
 ![](img/spiderman.gif){fig-align="center"}
 
 
-::: footer
-Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-:::
 
-## Fluxo do Web Scraping 
+## Fluxo do Web Scraping
 
 ![](img/cycle.png){fig-align="center"}
 
-::: footer
-Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-:::
+
 
 ## Tipos de problemas de raspagem de dados
 
-- **APIs disponíveis**: O site fornece uma forma estruturada e documentada para acessar as páginas (com ou sem necessidade de fazer login).
+-   **APIs disponíveis**: O site fornece uma forma estruturada e documentada para acessar as páginas (com ou sem necessidade de fazer login).
 
-- **APIs escondidas**: O site não fornece uma forma estruturada e documentada para acessar as páginas, mas internamente é alimentado por uma API não documentada, que podemos descobrir e usar.
+-   **APIs escondidas**: O site não fornece uma forma estruturada e documentada para acessar as páginas, mas internamente é alimentado por uma API não documentada, que podemos descobrir e usar.
 
-
-::: footer
-Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-:::
 
 ## Tipos de problemas de raspagem de dados
 
-- **HTML estático**: O site não fornece uma forma estruturada de acessar as páginas, e as páginas são geradas de forma estática (carregam sem necessidade de usar um navegador).
+-   **HTML estático**: O site não fornece uma forma estruturada de acessar as páginas, e as páginas são geradas de forma estática (carregam sem necessidade de usar um navegador).
 
-- **HTML dinâmico**: O site não fornece uma forma estruturada de acessar as páginas, e as páginas são geradas de forma dinâmica.
+-   **HTML dinâmico**: O site não fornece uma forma estruturada de acessar as páginas, e as páginas são geradas de forma dinâmica.
 
-- ...
+-   ...
 
-::: footer
-Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-:::
+
 
 ## Tipos de problemas de raspagem de dados
 

@@ -30,9 +30,7 @@ date-format: 'MMMM [de] YYYY'
 
 - Reduz o volume na transferência de dados
 
-::: footer
-Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-:::
+
 
 ## API
 
@@ -52,9 +50,7 @@ Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [
 - Pode ou não possuir parâmetros para acessar as informações.
 - O resultado geralmente vem num arquivo **json**.
 
-::: footer
-Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-:::
+
 
 ## Como funciona uma API?
 
@@ -67,21 +63,42 @@ Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [
 
 - R: `httr` ou `httr2`.
 
-::: footer
-Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-:::
-
 
 ## Tipos de APIs
 
--   **APIs disponíveis**: O site fornece uma forma estruturada e documentada para acessar as páginas (com ou sem necessidade de fazer login).
+-   **APIs disponíveis/documentadas**: O site fornece uma forma estruturada e documentada para acessar as páginas (com ou sem necessidade de fazer login).
 
 -   **APIs escondidas**: O site não fornece uma forma estruturada e documentada para acessar as páginas, mas internamente é alimentado por uma API não documentada, que podemos descobrir e usar.
 
+## Requisições
 
-::: footer
-Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-:::
+-   **GET**: Requisição para obter dados.
+
+
+-   **POST**: Requisição que permite envio de dados (ex. parâmetros para autenticação).
+
+## Compondo uma requisição
+
+- Precisamos descobrir qual URL acessar.
+
+![](img/compondo-url.png)
+
+Acesse: <https://brasilapi.com.br/api/cep/v1/01310100>
+
+
+## Possíveis status
+
+- `200` OK
+
+- `302` Redirecionado
+
+- `400` Requisição mal formatada
+
+- `401` Não autorizado
+
+- `404` Não encontrado
+
+- `503` Erro no servidor
 
 
 
