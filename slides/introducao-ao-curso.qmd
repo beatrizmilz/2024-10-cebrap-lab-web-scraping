@@ -1,0 +1,158 @@
+---
+title: "cebrap.lab online  - Raspagem de dados com R"
+subtitle: "Introdução ao curso"
+format:
+  revealjs:
+    incremental: false
+    logo: "https://cursos.cebrap.org.br/wp-content/uploads/2022/02/logo-nav.png"
+    footer: "Slides por [Beatriz Milz](https://beamilz.com), feitos com [Quarto](https://quarto.org/docs/presentations/revealjs/index.html). Códigos e materiais disponíveis no [GitHub](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping). Licença de uso: CC-BY-SA."
+    theme: ["custom.scss"]
+    slide-number: c/t
+    show-slide-number: all
+    hash-type: number
+editor: visual
+lang: pt
+author: "Beatriz Milz"
+date: '2024-10-21'
+date-format: 'MMMM [de] YYYY'
+---
+
+## Ministrante
+
+[![](img/beatriz-github.png){fig-align="center" width="60%"}](https://github.com/beatrizmilz)
+
+## Informações gerais
+
+-   **Data/horário:** 21 a 25 de outubro/2024;
+    -   Segunda, Quarta e Sexta: aula ao vivo, online, das 19h00 às 22h00.
+    -   Terça e quinta: haverão tarefas para casa, para praticar os conceitos.
+
+## Pré-requisitos
+
+-   `R` e `RStudio` instalados no seu computador:
+
+-   Links para instalação:
+
+    -   [R](https://cran.r-project.org/)
+    -   [RStudio](https://posit.co/download/rstudio-desktop/)
+
+## Pré-requisitos
+
+-   Instalar pacotes:
+
+-   `{httr}` (para acessar a web).
+
+-   `{xml2}` e `{rvest}` (para extrair dados de arquivos HTML).
+
+-   `{tidyverse}` (para trabalhar com os dados extraídos).
+
+```{r, eval=FALSE, echo = TRUE}
+install.packages(c(
+  "tidyverse", "httr", "rvest", "xml2",
+))
+```
+
+## Pré-requisitos
+
+-   Conhecimento básico de `R` e `tidyverse`.
+  -   Na página do curso, indiquei alguns materiais que podem ajudar a relembrar ou aprender esses conceitos.
+  
+  
+- Esse curso não é sobre introdução ao `R`, mas sim de raspagem de dados com `R`.
+
+
+## Plano das aulas
+
+O curso abordará conceitos, como:
+
+-   O que é raspagem de dados?;
+
+-   Política de uso;
+
+-   Tipos de problemas de raspagem
+
+-   APIs disponíveis e “escondidas”;
+
+-   Raspagem de HTML (estático e dinâmico);
+
+## O que é raspagem de dados?
+
+-   Envolve acessar, baixar e organizar dados provenientes da web.
+
+-   Em inglês chamamos de "*web scraping*".
+
+-   **Muito do que vemos na internet pode se transformar dados para analisar!**
+
+![](img/matrix.gif){fig-align="center"}
+
+::: footer
+Slide adaptado do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+:::
+
+## Política do web scraping
+
+### Quando usar
+
+- Quando precisamos coletar um volume grande de dados da internet
+
+### Quando não usar
+
+- Existem formas mais simples de obter os dados (API, base de dados, etc.)
+
+- Os termos de uso do site não nos permitem fazer isso.
+
+- As informações do site não são públicas.
+
+::: footer
+Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+:::
+
+## Cuidados
+
+- Risco de derrubar ou comprometer a estabilidade do site.
+
+- Vale à pena conversar com a entidade detentora dos dados.
+
+![](img/spiderman.gif){fig-align="center"}
+
+
+::: footer
+Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+:::
+
+## Fluxo do Web Scraping 
+
+![](img/cycle.png){fig-align="center"}
+
+::: footer
+Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+:::
+
+## Tipos de problemas de raspagem de dados
+
+- **APIs disponíveis**: O site fornece uma forma estruturada e documentada para acessar as páginas (com ou sem necessidade de fazer login).
+
+- **APIs escondidas**: O site não fornece uma forma estruturada e documentada para acessar as páginas, mas internamente é alimentado por uma API não documentada, que podemos descobrir e usar.
+
+
+::: footer
+Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+:::
+
+## Tipos de problemas de raspagem de dados
+
+- **HTML estático**: O site não fornece uma forma estruturada de acessar as páginas, e as páginas são geradas de forma estática (carregam sem necessidade de usar um navegador).
+
+- **HTML dinâmico**: O site não fornece uma forma estruturada de acessar as páginas, e as páginas são geradas de forma dinâmica.
+
+- ...
+
+::: footer
+Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+:::
+
+## Tipos de problemas de raspagem de dados
+
+Veremos exemplos de raspagem de dados em cada um desses tipos de problemas.
+
+## Vamos começar? {.middle .center}
