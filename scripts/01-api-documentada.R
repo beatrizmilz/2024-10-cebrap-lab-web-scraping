@@ -55,8 +55,6 @@ conteudo_cep$service
 
 
 
-# Taxas 
-
 
 ## Exemplo 2 - Explorando a Tabela FIPE  ------
 
@@ -116,11 +114,16 @@ mes_referencia_tabela_fipe |>
 
 ### 2.3 - Consultando o preço de um veículo segundo a tabela FIPE ----
 
-# Parte 1 - Consuktando o preço atual
+# Parte 1 - Consultando o preço atual
 # Vamos consultar o preço de um veículo específico
 
+# Endpoint da API da Tabela FIPE para preços
 endpoint_preco <- "/fipe/preco/v1/"
+
+# Código do veículo
 cod_veiculo <- "025265-4"
+
+# Montando a URL completa
 u_preco <- paste0(u_base, endpoint_preco, cod_veiculo)
 
 # Fazendo a requisição GET
@@ -129,7 +132,6 @@ r_preco <- GET(u_preco)
 # Buscando o conteúdo da resposta e convertendo para um data frame
 tab_preco_atual <- content(r_preco, simplifyDataFrame = TRUE) |> 
   tibble::as_tibble()
-
 
 tab_preco_atual
 
