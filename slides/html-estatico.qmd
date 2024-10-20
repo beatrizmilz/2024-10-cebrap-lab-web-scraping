@@ -1,6 +1,6 @@
 ---
 title: "cebrap.lab online  - Raspagem de dados com R"
-subtitle: "Raspando informações de HTML"
+subtitle: "Raspando informações de páginas HTML"
 format:
   revealjs:
     incremental: false

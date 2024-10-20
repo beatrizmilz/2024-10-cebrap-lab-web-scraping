@@ -64,6 +64,9 @@ tidyverse).
 
 - [APIs](https://beatrizmilz.github.io/2024-10-cebrap-lab-web-scraping/slides/api.html)
 
+- [Raspando informações de páginas
+  HTML](https://beatrizmilz.github.io/2024-10-cebrap-lab-web-scraping/slides/html-estatico.html)
+
 ### Scripts pós aula
 
 Em breve!
