@@ -1,0 +1,205 @@
+---
+title: "cebrap.lab online  - Raspagem de dados com R"
+subtitle: "Raspando informações de HTML"
+format:
+  revealjs:
+    incremental: false
+    logo: "https://cursos.cebrap.org.br/wp-content/uploads/2022/02/logo-nav.png"
+    theme: ["custom.scss"]
+    slide-number: c/t
+    show-slide-number: all
+    hash-type: number
+editor: visual
+lang: pt
+author: "Beatriz Milz"
+date: '2024-10-21'
+date-format: 'MMMM [de] YYYY'
+---
+
+
+## Fluxo do web scraping
+
+
+
+#### 1. Imitar
+
+- Na aba Network seu navegador, investigue as requisições.
+- Tente imitá-las no R, copiando os caminhos e parâmetros utilizados.
+
+#### 2. Coletar
+
+- Baixar todas as páginas HTML (ou outro formato).
+- Boa prática: salvar arquivos brutos com `httr::write_disk()`.
+
+## Fluxo do web scraping
+
+#### 3. Parsear
+
+- Transformar os dados brutos em uma base de dados passível de análise.
+- Utilizar pacotes `{xml2}`, `{jsonlite}`, `{pdftools}`, dependendo do arquivo.
+
+#### Pacotes
+
+- Utilizar `{httr}` para imitar/coletar.
+- Utilizar `{xml2}` para parsear.
+- Utilização massiva do `{tidyverse}`.
+
+## HTML
+
+- HTML (Hypertext Markup Language) é uma linguagem de marcação cujo uso é a criação de páginas web. 
+
+- Por trás de todo site há pelo menos um arquivo `.html`
+
+![](img/html1.png){fig-align="center"}
+
+## HTML
+
+- Todo arquivo HTML pode ser dividido em seções que definirão diferentes aspectos da página. 
+- `<head>` descreve metadados, enquanto `<body>` é o corpo da página.
+
+![](img/html2.png){fig-align="center"}
+
+
+## HTML
+
+- Tags (head, body, h1, p, ...) demarcam as seções e sub-seções
+
+- enquanto atributos (charset, style, ...) mudam como essas seções são renderizadas pelo navegador.
+
+![](img/html3.png){fig-align="center"}
+##  Teoria
+
+1) Todo HTML se transforma em um DOM (document object model) dentro do navegador.
+
+2) Um DOM pode ser representado como uma árvore em que cada node é:
+
+- ou um atributo
+- ou um texto
+- ou uma tag
+- ou um comentário
+
+3) Utiliza-se a relação de pai/filho/irmão entre os nós.
+
+4) Para descrever a estrutura de um DOM, usamos uma linguagem de markup chamada XML (Extensible Markup Language) que define regras para a codificação de um documento.
+
+## HTML
+
+O HTML do exemplo, na verdade, é isso aqui:
+
+![](img/html_exemplo_tree_paifilho.png){fig-align="center"}
+
+## XPath - XML Path Language
+
+- Exemplo: coletando todas as tags `<p>` (parágrafos)
+
+```{r}
+#| echo: true
+library(xml2)
+
+# Ler o HTML
+html <- read_html("img/html_exemplo.html")
+
+# Coletar todos os nodes com a tag <p>
+nodes <- xml_find_all(html, "//p")
+
+# Extrair o texto contido em cada um dos nodes
+text <- xml_text(nodes)
+text
+```
+
+## XPath - XML Path Language
+
+- Com `xml_attrs()` podemos extrair todos os atributos de um node:
+
+```{r}
+#| echo: true
+xml_attrs(nodes)
+xml_attr(nodes, "style")
+```
+
+## XPath - XML Path Language
+
+- Já com `xml_children()`, `xml_parents()` e `xml_siblings()` podemos acessar a
+estrutura de parentesco dos nós:
+
+```{r}
+#| echo: true
+heads <- xml_find_all(html, "head")
+xml_siblings(heads)
+
+xml_children(heads)
+```
+
+## {rvest}
+
+- Pacote construído sobre `{xml2}` e `{httr}`
+
+- Busca facilitar a vida com alguns helpers
+
+- Permite utilização de CSS path, uma alternativa ao XPath
+
+- Na prática, no entanto, pode ser improdutivo utilizá-lo
+
+
+## CSS
+
+- CSS (Cascading Style Sheets) descrevem como os elementos HTML devem se
+apresentar na tela. Ele é responsável pela aparência da página.
+
+## CSS
+
+```{html }
+#| echo: true
+<p style='color: blue;'>Sou um parágrafo azul.</p>
+```
+
+- O atributo `style` é uma das maneiras de mexer na aparência utilizando CSS. No
+exemplo,
+
+- `color` é uma **property** do CSS e 
+- `blue` é um **value** do CSS.
+
+- Para associar esses pares **properties/values** aos elementos de um DOM, existe uma ferramenta chamada **CSS selectors**. Assim como fazemos com XML, podemos usar esses seletores (através do pacote `rvest`) para extrair os nós de uma página HTML.
+
+
+## CSS
+
+- Abaixo vemos um `.html` e um `.css` que é usado para estilizar o primeiro. Se os nós indicados forem encontrados pelos seletores do CSS, então eles sofrerão as mudanças indicadas.
+
+```{r, echo = FALSE, dpi = 240, fig.align='center'}
+knitr::include_graphics("img/html_exemplo_com_css_a_parte3.png")
+```
+
+
+## Seletores CSS vs. XPath
+
+- A grande vantagem do XPath é permitir que acessemos os filhos, pais e irmãos de um nó. De fato os seletores CSS são mais simples, mas eles também são mais limitados.
+
+- O bom é que se tivermos os seletores CSS, podemos transformá-los sem muita dificuldade em um query XPath:
+
+- Seletor de tag: `p` = `//p`
+- Seletor de classe: `.azul` = `//*[@class='azul']`
+- Seletor de id: `#meu-p-favorito` = `//*[@id='meu-p-favorito']`
+
+
+## Seletores CSS vs. XPath
+
+```{r}
+#| echo: true
+html <- read_html("img/html_exemplo_css_a_parte.html")
+xml_find_all(html, "//p")
+
+xml_find_all(html, "//*[@class='azul']")
+```
+
+
+## Seletores CSS vs. XPath
+
+```{r}
+#| echo: true
+rvest::html_nodes(html, ".azul")
+```
+
+- Note que `//p` indica que estamos fazendo uma busca na tag `p`, enquanto `//*` indica que estamos fazendo uma busca em qualquer tag.
+
+## Vamos ao R: <BR> `scripts/` {.middle .center}

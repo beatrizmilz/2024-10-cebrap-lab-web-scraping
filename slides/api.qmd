@@ -87,7 +87,6 @@ date-format: 'MMMM [de] YYYY'
 
 ## Buscando um CEP no R
 
-
 ```{r}
 #| echo: true
 url_base <- "https://brasilapi.com.br/api" 
@@ -131,4 +130,56 @@ Response [https://brasilapi.com.br/api/cep/v1/01310100]
 
 Acesse: <https://brasilapi.com.br/api/cep/v1/01310100>
 
-## Vamos começar? {.middle .center}
+## Vamos ao R: <BR> `scripts/01-api-documentada.R` {.middle .center}
+
+
+# APIs escondidas
+
+## APIs escondidas
+
+- Uma API "escondida" é uma API que não é documentada, mas que é usada internamente por um site.
+
+- Neste caso, podemos descobrir sua existência explorando.
+
+- Técnicas mais importantes:
+
+  - Inspecionar elemento
+
+  - Aba Network
+
+## Exemplo - Sabesp
+
+1. Abra o navegador
+2. Acesse o Portal de Mananciais da Sabesp: <http://mananciais.sabesp.com.br/>
+3. Vamos explorar o inspetor de elementos e a aba Network!
+
+
+## Vamos ao R: <BR> `scripts/02-api-escondida.R` {.middle .center}
+
+
+# Autenticação
+
+
+
+## GET e POST
+
+- **GET** utiliza parâmetros na URL
+    - Utilizar parâmetro `query=`
+
+- **POST** utiliza parâmetros no corpo da requisição
+    - Utilizar o parâmetro `body=`
+    - Pode utilizar parâmetros na URL, mas não é comum
+    
+- A principal diferença entre os dois tipos é a **segurança**
+
+## Autenticação
+
+- A autenticação é usada tanto em APIs quanto sites.
+
+- Geralmente acontece através de um parâmetro em uma requisição **POST**.
+
+- A requisição pode aparecer no *body* ou nos *headers*.
+
+- Se a API for documentada, as informações de autenticação estarão lá.
+
+## Vamos ao R: <BR> `scripts/03-api-autenticacao.R` {.middle .center}

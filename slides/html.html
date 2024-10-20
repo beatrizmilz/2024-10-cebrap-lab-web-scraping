@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt"><head>
-<script src="api_files/libs/clipboard/clipboard.min.js"></script>
-<script src="api_files/libs/quarto-html/tabby.min.js"></script>
-<script src="api_files/libs/quarto-html/popper.min.js"></script>
-<script src="api_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="api_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="api_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="api_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="api_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="html_files/libs/clipboard/clipboard.min.js"></script>
+<script src="html_files/libs/quarto-html/tabby.min.js"></script>
+<script src="html_files/libs/quarto-html/popper.min.js"></script>
+<script src="html_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="html_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="html_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="html_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="html_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Beatriz Milz">
@@ -15,8 +15,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="api_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="api_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="html_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="html_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -95,11 +95,11 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="api_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="api_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="api_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="api_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="api_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="html_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="html_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="html_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="html_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="html_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -392,7 +392,7 @@
 
 <section class="quarto-title-block center">
   <h1 class="title">cebrap.lab online - Raspagem de dados com R</h1>
-  <p class="subtitle">Conhecendo API’s</p>
+  <p class="subtitle">Raspando informações de HTML</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -405,199 +405,242 @@ Beatriz Milz
   <p class="date">outubro de 2024</p>
 </section>
 <section class="slide level2">
-<h2>O que é API?</h2>
+<h2>Fluxo do web scraping</h2>
+<h4>1. Imitar</h4>
 <ul>
-<li><p><em>Application Programming Interface</em>.</p></li>
-<li><p>É uma forma unificada para acessar dados de uma plataforma, a partir de qualquer linguagem de programação.</p></li>
-<li><p>Facilita a vida da pessoa que programa.</p></li>
-<li><p>Geralmente vem acompanhada de documentação.</p></li>
-<li><p>Reduz o volume na transferência de dados</p></li>
+<li>Na aba Network seu navegador, investigue as requisições.</li>
+<li>Tente imitá-las no R, copiando os caminhos e parâmetros utilizados.</li>
+</ul>
+<h4>2. Coletar</h4>
+<ul>
+<li>Baixar todas as páginas HTML (ou outro formato).</li>
+<li>Boa prática: salvar arquivos brutos com <code>httr::write_disk()</code>.</li>
 </ul>
 </section>
 <section class="slide level2">
-<h2>API</h2>
-
-<img data-src="img/API_garcom.png" class="r-stretch"></section>
-<section class="slide level2">
-<h2>Como funciona uma API?</h2>
-<h3>1. Acessar</h3>
+<h2>Fluxo do web scraping</h2>
+<h4>3. Parsear</h4>
 <ul>
-<li>Instruções de acesso na <strong>documentação</strong> da API.</li>
-<li>Pode envolver obter um <strong>token</strong> de acesso, que funciona como uma senha.</li>
+<li>Transformar os dados brutos em uma base de dados passível de análise.</li>
+<li>Utilizar pacotes <code>{xml2}</code>, <code>{jsonlite}</code>, <code>{pdftools}</code>, dependendo do arquivo.</li>
 </ul>
-<h3>2. Coletar</h3>
+<h4>Pacotes</h4>
 <ul>
-<li>Geralmente são requisições do tipo <strong>GET</strong>.</li>
-<li>Pode ou não possuir parâmetros para acessar as informações.</li>
-<li>O resultado geralmente vem num arquivo <strong>json</strong>.</li>
+<li>Utilizar <code>{httr}</code> para imitar/coletar.</li>
+<li>Utilizar <code>{xml2}</code> para parsear.</li>
+<li>Utilização massiva do <code>{tidyverse}</code>.</li>
 </ul>
 </section>
 <section class="slide level2">
-<h2>Como funciona uma API?</h2>
-<h3>3. Inserir</h3>
+<h2>HTML</h2>
 <ul>
-<li>Geralmente são requisições do tipo <strong>POST</strong>.</li>
-<li>Necessariamente possui parâmetros para enviar informações ao servidor.</li>
-</ul>
-<h3>Pacotes</h3>
-<ul>
-<li>R: <code>httr</code> ou <code>httr2</code>.</li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>Tipos de APIs</h2>
-<ul>
-<li><p><strong>APIs disponíveis/documentadas</strong>: O site fornece uma forma estruturada e documentada para acessar as páginas (com ou sem necessidade de fazer login).</p></li>
-<li><p><strong>APIs escondidas</strong>: O site não fornece uma forma estruturada e documentada para acessar as páginas, mas internamente é alimentado por uma API não documentada, que podemos descobrir e usar.</p></li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>Requisições</h2>
-<ul>
-<li><p><strong>GET</strong>: Requisição para obter dados.</p></li>
-<li><p><strong>POST</strong>: Requisição que permite envio de dados (ex. parâmetros para autenticação).</p></li>
-</ul>
-</section>
-<section>
-<section class="title-slide slide level1 center">
-<h1>Exemplo - Brasil API</h1>
-<p><a href="https://brasilapi.com.br" class="uri">https://brasilapi.com.br</a></p>
-</section>
-<section class="slide level2">
-<h2>Documentação</h2>
-
-<img data-src="img/brasil-API-cep.png" class="r-stretch"><p><a href="https://brasilapi.com.br/docs#tag/CEP" class="uri">https://brasilapi.com.br/docs#tag/CEP</a></p>
-</section>
-<section class="slide level2">
-<h2>Compondo uma requisição</h2>
-<ul>
-<li>Precisamos descobrir qual URL acessar.</li>
+<li><p>HTML (Hypertext Markup Language) é uma linguagem de marcação cujo uso é a criação de páginas web.</p></li>
+<li><p>Por trás de todo site há pelo menos um arquivo <code>.html</code></p></li>
 </ul>
 
-<img data-src="img/compondo-url.png" class="r-stretch"></section>
+<img data-src="img/html1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section class="slide level2">
-<h2>Buscando um CEP no R</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>url_base <span class="ot">&lt;-</span> <span class="st">"https://brasilapi.com.br/api"</span> </span>
-<span id="cb1-2"><a href=""></a>endpoint <span class="ot">&lt;-</span> <span class="st">"/cep/v1/"</span></span>
-<span id="cb1-3"><a href=""></a>query_parameters <span class="ot">&lt;-</span> <span class="st">"01310100"</span></span>
-<span id="cb1-4"><a href=""></a>u_brasilapi <span class="ot">&lt;-</span> <span class="fu">paste0</span>(url_base, endpoint, query_parameters) </span>
-<span id="cb1-5"><a href=""></a>u_brasilapi</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "https://brasilapi.com.br/api/cep/v1/01310100"</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>httr<span class="sc">::</span><span class="fu">GET</span>(u_brasilapi)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<pre><code>Response [https://brasilapi.com.br/api/cep/v1/01310100]
-  Date: 2024-10-20 20:31
-  Status: 200
-  Content-Type: application/json; charset=utf-8
-  Size: 128 B</code></pre>
-</section>
-<section class="slide level2">
-<h2>Possíveis status</h2>
+<h2>HTML</h2>
 <ul>
-<li><p><code>200</code> OK</p></li>
-<li><p><code>302</code> Redirecionado</p></li>
-<li><p><code>400</code> Requisição mal formatada</p></li>
-<li><p><code>401</code> Não autorizado</p></li>
-<li><p><code>404</code> Não encontrado</p></li>
-<li><p><code>503</code> Erro no servidor</p></li>
+<li>Todo arquivo HTML pode ser dividido em seções que definirão diferentes aspectos da página.</li>
+<li><code>&lt;head&gt;</code> descreve metadados, enquanto <code>&lt;body&gt;</code> é o corpo da página.</li>
 </ul>
-</section>
-<section class="slide level2">
-<h2>JSON</h2>
 
-<img data-src="img/json.png" class="r-stretch"><p>Acesse: <a href="https://brasilapi.com.br/api/cep/v1/01310100" class="uri">https://brasilapi.com.br/api/cep/v1/01310100</a></p>
-</section>
-<section class="slide level2 middle center">
-<h2>Vamos ao R: <br> <code>scripts/01-api-documentada.R</code></h2>
-</section></section>
-<section>
-<section class="title-slide slide level1 center">
-<h1>APIs escondidas</h1>
-
-</section>
+<img data-src="img/html2.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section class="slide level2">
-<h2>APIs escondidas</h2>
+<h2>HTML</h2>
 <ul>
-<li><p>Uma API “escondida” é uma API que não é documentada, mas que é usada internamente por um site.</p></li>
-<li><p>Neste caso, podemos descobrir sua existência explorando.</p></li>
-<li><p>Técnicas mais importantes:</p>
-<ul>
-<li><p>Inspecionar elemento</p></li>
-<li><p>Aba Network</p></li>
-</ul></li>
+<li><p>Tags (head, body, h1, p, …) demarcam as seções e sub-seções</p></li>
+<li><p>enquanto atributos (charset, style, …) mudam como essas seções são renderizadas pelo navegador.</p></li>
 </ul>
-</section>
-<section class="slide level2">
-<h2>Exemplo - Sabesp</h2>
+<p><img data-src="img/html3.png" class="quarto-figure quarto-figure-center"> ## Teoria</p>
 <ol type="1">
-<li>Abra o navegador</li>
-<li>Acesse o Portal de Mananciais da Sabesp: <a href="http://mananciais.sabesp.com.br/" class="uri">http://mananciais.sabesp.com.br/</a></li>
-<li>Vamos explorar o inspetor de elementos e a aba Network!</li>
+<li><p>Todo HTML se transforma em um DOM (document object model) dentro do navegador.</p></li>
+<li><p>Um DOM pode ser representado como uma árvore em que cada node é:</p></li>
+</ol>
+<ul>
+<li>ou um atributo</li>
+<li>ou um texto</li>
+<li>ou uma tag</li>
+<li>ou um comentário</li>
+</ul>
+<ol start="3" type="1">
+<li><p>Utiliza-se a relação de pai/filho/irmão entre os nós.</p></li>
+<li><p>Para descrever a estrutura de um DOM, usamos uma linguagem de markup chamada XML (Extensible Markup Language) que define regras para a codificação de um documento.</p></li>
 </ol>
 </section>
-<section class="slide level2 middle center">
-<h2>Vamos ao R: <br> <code>scripts/02-api-escondida.R</code></h2>
-</section></section>
-<section>
-<section class="title-slide slide level1 center">
-<h1>Autenticação</h1>
+<section class="slide level2">
+<h2>HTML</h2>
+<p>O HTML do exemplo, na verdade, é isso aqui:</p>
 
+<img data-src="img/html_exemplo_tree_paifilho.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+<h2>XPath - XML Path Language</h2>
+<ul>
+<li>Exemplo: coletando todas as tags <code>&lt;p&gt;</code> (parágrafos)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(xml2)</span>
+<span id="cb1-2"><a href=""></a></span>
+<span id="cb1-3"><a href=""></a><span class="co"># Ler o HTML</span></span>
+<span id="cb1-4"><a href=""></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">"img/html_exemplo.html"</span>)</span>
+<span id="cb1-5"><a href=""></a></span>
+<span id="cb1-6"><a href=""></a><span class="co"># Coletar todos os nodes com a tag &lt;p&gt;</span></span>
+<span id="cb1-7"><a href=""></a>nodes <span class="ot">&lt;-</span> <span class="fu">xml_find_all</span>(html, <span class="st">"//p"</span>)</span>
+<span id="cb1-8"><a href=""></a></span>
+<span id="cb1-9"><a href=""></a><span class="co"># Extrair o texto contido em cada um dos nodes</span></span>
+<span id="cb1-10"><a href=""></a>text <span class="ot">&lt;-</span> <span class="fu">xml_text</span>(nodes)</span>
+<span id="cb1-11"><a href=""></a>text</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Sou um parágrafo!"      "Sou um parágrafo azul."</code></pre>
+</div>
+</div>
 </section>
 <section class="slide level2">
-<h2>GET e POST</h2>
+<h2>XPath - XML Path Language</h2>
 <ul>
-<li><strong>GET</strong> utiliza parâmetros na URL
+<li>Com <code>xml_attrs()</code> podemos extrair todos os atributos de um node:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">xml_attrs</span>(nodes)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+named character(0)
+
+[[2]]
+         style 
+"color: blue;" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">xml_attr</span>(nodes, <span class="st">"style"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA             "color: blue;"</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>XPath - XML Path Language</h2>
 <ul>
-<li>Utilizar parâmetro <code>query=</code></li>
-</ul></li>
-<li><strong>POST</strong> utiliza parâmetros no corpo da requisição
+<li>Já com <code>xml_children()</code>, <code>xml_parents()</code> e <code>xml_siblings()</code> podemos acessar a estrutura de parentesco dos nós:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>heads <span class="ot">&lt;-</span> <span class="fu">xml_find_all</span>(html, <span class="st">"head"</span>)</span>
+<span id="cb7-2"><a href=""></a><span class="fu">xml_siblings</span>(heads)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (1)}
+[1] &lt;body&gt;\n    &lt;h1&gt;Título Grande&lt;/h1&gt;\n    \n    &lt;h2&gt;Título um pouco menor&lt;/ ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">xml_children</span>(heads)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (3)}
+[1] &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n
+[2] &lt;meta charset="utf-8"&gt;\n
+[3] &lt;title&gt;Título da abinha do navegador&lt;/title&gt;</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>{rvest}</h2>
 <ul>
-<li>Utilizar o parâmetro <code>body=</code></li>
-<li>Pode utilizar parâmetros na URL, mas não é comum</li>
-</ul></li>
-<li>A principal diferença entre os dois tipos é a <strong>segurança</strong></li>
+<li><p>Pacote construído sobre <code>{xml2}</code> e <code>{httr}</code></p></li>
+<li><p>Busca facilitar a vida com alguns helpers</p></li>
+<li><p>Permite utilização de CSS path, uma alternativa ao XPath</p></li>
+<li><p>Na prática, no entanto, pode ser improdutivo utilizá-lo</p></li>
 </ul>
 </section>
 <section class="slide level2">
-<h2>Autenticação</h2>
+<h2>CSS</h2>
 <ul>
-<li><p>A autenticação é usada tanto em APIs quanto sites.</p></li>
-<li><p>Geralmente acontece através de um parâmetro em uma requisição <strong>POST</strong>.</p></li>
-<li><p>A requisição pode aparecer no <em>body</em> ou nos <em>headers</em>.</p></li>
-<li><p>Se a API for documentada, as informações de autenticação estarão lá.</p></li>
+<li>CSS (Cascading Style Sheets) descrevem como os elementos HTML devem se apresentar na tela. Ele é responsável pela aparência da página.</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>CSS</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb11-1"><a href=""></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> style</span><span class="op">=</span><span class="st">'color: blue;'</span><span class="dt">&gt;</span>Sou um parágrafo azul.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>O atributo <code>style</code> é uma das maneiras de mexer na aparência utilizando CSS. No exemplo,</p></li>
+<li><p><code>color</code> é uma <strong>property</strong> do CSS e</p></li>
+<li><p><code>blue</code> é um <strong>value</strong> do CSS.</p></li>
+<li><p>Para associar esses pares <strong>properties/values</strong> aos elementos de um DOM, existe uma ferramenta chamada <strong>CSS selectors</strong>. Assim como fazemos com XML, podemos usar esses seletores (através do pacote <code>rvest</code>) para extrair os nós de uma página HTML.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>CSS</h2>
+<ul>
+<li>Abaixo vemos um <code>.html</code> e um <code>.css</code> que é usado para estilizar o primeiro. Se os nós indicados forem encontrados pelos seletores do CSS, então eles sofrerão as mudanças indicadas.</li>
+</ul>
+
+<img data-src="img/html_exemplo_com_css_a_parte3.png" class="quarto-figure quarto-figure-center r-stretch" width="323"></section>
+<section class="slide level2">
+<h2>Seletores CSS vs.&nbsp;XPath</h2>
+<ul>
+<li><p>A grande vantagem do XPath é permitir que acessemos os filhos, pais e irmãos de um nó. De fato os seletores CSS são mais simples, mas eles também são mais limitados.</p></li>
+<li><p>O bom é que se tivermos os seletores CSS, podemos transformá-los sem muita dificuldade em um query XPath:</p></li>
+<li><p>Seletor de tag: <code>p</code> = <code>//p</code></p></li>
+<li><p>Seletor de classe: <code>.azul</code> = <code>//*[@class='azul']</code></p></li>
+<li><p>Seletor de id: <code>#meu-p-favorito</code> = <code>//*[@id='meu-p-favorito']</code></p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Seletores CSS vs.&nbsp;XPath</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">"img/html_exemplo_css_a_parte.html"</span>)</span>
+<span id="cb12-2"><a href=""></a><span class="fu">xml_find_all</span>(html, <span class="st">"//p"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (3)}
+[1] &lt;p&gt;Sou um par?grafo normal.&lt;/p&gt;
+[2] &lt;p class="azul"&gt;Sou um par?grafo azul.&lt;/p&gt;
+[3] &lt;p id="meu-p-favorito" class="azul"&gt;Sou um par?grafo azul e negrito.&lt;/p&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">xml_find_all</span>(html, <span class="st">"//*[@class='azul']"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (2)}
+[1] &lt;p class="azul"&gt;Sou um par?grafo azul.&lt;/p&gt;
+[2] &lt;p id="meu-p-favorito" class="azul"&gt;Sou um par?grafo azul e negrito.&lt;/p&gt;</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Seletores CSS vs.&nbsp;XPath</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>rvest<span class="sc">::</span><span class="fu">html_nodes</span>(html, <span class="st">".azul"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (2)}
+[1] &lt;p class="azul"&gt;Sou um par?grafo azul.&lt;/p&gt;
+[2] &lt;p id="meu-p-favorito" class="azul"&gt;Sou um par?grafo azul e negrito.&lt;/p&gt;</code></pre>
+</div>
+</div>
+<ul>
+<li>Note que <code>//p</code> indica que estamos fazendo uma busca na tag <code>p</code>, enquanto <code>//*</code> indica que estamos fazendo uma busca em qualquer tag.</li>
 </ul>
 </section>
 <section class="slide level2 middle center">
-<h2>Vamos ao R: <br> <code>scripts/03-api-autenticacao.R</code></h2>
+<h2>Vamos ao R: <br> <code>scripts/</code></h2>
 <div class="quarto-auto-generated-content">
 <p><img src="https://cursos.cebrap.org.br/wp-content/uploads/2022/02/logo-nav.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>Slides por <a href="https://beamilz.com">Beatriz Milz</a>, feitos com <a href="https://quarto.org/docs/presentations/revealjs/index.html">Quarto</a>. Códigos e materiais disponíveis no <a href="https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping">GitHub</a>. Licença de uso: CC-BY-SA.</p>
+
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="api_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="html_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="api_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="api_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="api_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="api_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="api_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="html_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="html_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="html_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="html_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="html_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="api_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="api_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="api_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="api_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="html_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="html_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="html_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="html_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
