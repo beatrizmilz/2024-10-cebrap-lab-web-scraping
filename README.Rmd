@@ -54,7 +54,9 @@ O curso tem como **público alvo**  pessoasque tenham interesse em obter dados a
 
 ### Slides
 
-- [Slide de apresentação do curso](https://beatrizmilz.github.io/2024-10-cebrap-lab-web-scraping/slides/introducao-ao-curso.html#/)
+- [Slide de apresentação do curso](https://beatrizmilz.github.io/2024-10-cebrap-lab-web-scraping/slides/introducao-ao-curso.html)
+
+- [APIs](https://beatrizmilz.github.io/2024-10-cebrap-lab-web-scraping/slides/api.html)
 
 
 

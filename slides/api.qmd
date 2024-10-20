@@ -1,0 +1,88 @@
+---
+title: "cebrap.lab online  - Raspagem de dados com R"
+subtitle: "Conhecendo API's"
+format:
+  revealjs:
+    incremental: false
+    logo: "https://cursos.cebrap.org.br/wp-content/uploads/2022/02/logo-nav.png"
+    footer: "Slides por [Beatriz Milz](https://beamilz.com), feitos com [Quarto](https://quarto.org/docs/presentations/revealjs/index.html). Códigos e materiais disponíveis no [GitHub](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping). Licença de uso: CC-BY-SA."
+    theme: ["custom.scss"]
+    slide-number: c/t
+    show-slide-number: all
+    hash-type: number
+editor: visual
+lang: pt
+author: "Beatriz Milz"
+date: '2024-10-21'
+date-format: 'MMMM [de] YYYY'
+---
+
+
+## O que é API?
+
+- *Application Programming Interface*.
+
+- É uma forma unificada para acessar dados de uma plataforma, a partir de qualquer linguagem de programação.
+
+- Facilita a vida da pessoa que programa.
+
+- Geralmente vem acompanhada de documentação.
+
+- Reduz o volume na transferência de dados
+
+::: footer
+Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+:::
+
+## API
+
+![](img/API_garcom.png)
+
+## Como funciona uma API?
+
+
+### 1. Acessar
+
+- Instruções de acesso na **documentação** da API.
+- Pode envolver obter um **token** de acesso, que funciona como uma senha.
+
+### 2. Coletar
+
+- Geralmente são requisições do tipo **GET**.
+- Pode ou não possuir parâmetros para acessar as informações.
+- O resultado geralmente vem num arquivo **json**.
+
+::: footer
+Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+:::
+
+## Como funciona uma API?
+
+### 3. Inserir
+
+- Geralmente são requisições do tipo **POST**.
+- Necessariamente possui parâmetros para enviar informações ao servidor.
+
+### Pacotes
+
+- R: `httr` ou `httr2`.
+
+::: footer
+Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+:::
+
+
+## Tipos de APIs
+
+-   **APIs disponíveis**: O site fornece uma forma estruturada e documentada para acessar as páginas (com ou sem necessidade de fazer login).
+
+-   **APIs escondidas**: O site não fornece uma forma estruturada e documentada para acessar as páginas, mas internamente é alimentado por uma API não documentada, que podemos descobrir e usar.
+
+
+::: footer
+Slide do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
+:::
+
+
+
+## Vamos começar? {.middle .center}

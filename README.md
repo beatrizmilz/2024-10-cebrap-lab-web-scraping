@@ -60,7 +60,9 @@ tidyverse).
 ### Slides
 
 - [Slide de apresentação do
-  curso](https://beatrizmilz.github.io/2024-10-cebrap-lab-web-scraping/slides/introducao-ao-curso.html#/)
+  curso](https://beatrizmilz.github.io/2024-10-cebrap-lab-web-scraping/slides/introducao-ao-curso.html)
+
+- [APIs](https://beatrizmilz.github.io/2024-10-cebrap-lab-web-scraping/slides/api.html)
 
 ### Scripts pós aula
 
