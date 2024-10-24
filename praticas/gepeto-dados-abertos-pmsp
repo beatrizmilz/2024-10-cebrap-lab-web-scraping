@@ -1,0 +1,21 @@
+me ajude a fazer uma requisição em uma API!?
+Estou fazendo com R, e pacotes como httr, rvest
+Estou tentando primeiramente buscar a lista de temas disponíveis de dados abertos no Portal da PMSP de dados abertos. O site é feito com o CKAN.
+No navegador quando faço o acesso no site http://dados.prefeitura.sp.gov.br/api/3/action/package_list consigo ver o json desejado. mas quando tento com R o resultado dá 200 mas retorna um html escrito "REQUISIÇÃO BLOQUEADA"
+
+Código abaixo: 
+------
+# Não encontrei a API escondida!
+# É um site implementado com CKAN
+# https://docs.ckan.org/en/2.7/api/
+# O CKAN tem uma API
+
+library(httr)
+
+url_temas <- "http://dados.prefeitura.sp.gov.br/api/3/action/package_list"
+
+lista_de_temas <- url_temas |> 
+  GET() 
+
+# Dá resultado 200, mas aparece "REQUISIÇÃO BLOQUEADA" 
+# no conteúdo do HTML
