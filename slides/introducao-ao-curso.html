@@ -442,15 +442,23 @@ Beatriz Milz
 <section class="slide level2">
 <h2>Pré-requisitos</h2>
 <ul>
-<li><p>Instalar pacotes:</p></li>
-<li><p><code>{httr}</code> (para acessar a web).</p></li>
-<li><p><code>{xml2}</code> e <code>{rvest}</code> (para extrair dados de arquivos HTML).</p></li>
-<li><p><code>{tidyverse}</code> (para trabalhar com os dados extraídos).</p></li>
+<li>Instalar pacotes:</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">install.packages</span>(<span class="fu">c</span>(</span>
-<span id="cb1-2"><a href=""></a>  <span class="st">"tidyverse"</span>, <span class="st">"httr"</span>, <span class="st">"rvest"</span>, <span class="st">"xml2"</span>,</span>
-<span id="cb1-3"><a href=""></a>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href=""></a>  <span class="co"># Pacotes de limpeza, manipulação, iteração</span></span>
+<span id="cb1-3"><a href=""></a>  <span class="st">"tidyverse"</span>,  <span class="st">"fs"</span>, <span class="st">"janitor"</span>, <span class="st">"cli"</span>, </span>
+<span id="cb1-4"><a href=""></a>  </span>
+<span id="cb1-5"><a href=""></a>  <span class="co"># Pacotes usados para acessar a web e extrair informações do HTML</span></span>
+<span id="cb1-6"><a href=""></a>  <span class="st">"httr"</span>, <span class="st">"rvest"</span>, <span class="st">"xml2"</span>,</span>
+<span id="cb1-7"><a href=""></a>  </span>
+<span id="cb1-8"><a href=""></a>  <span class="co"># Pacotes necessários para os exemplos de HTML dinâmico</span></span>
+<span id="cb1-9"><a href=""></a>  <span class="st">"webdriver"</span>, <span class="st">"RSelenium"</span></span>
+<span id="cb1-10"><a href=""></a>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Para os exemplos de HTML dinâmico, instalar também o <code>phantomjs</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>webdriver<span class="sc">::</span><span class="fu">install_phantomjs</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">

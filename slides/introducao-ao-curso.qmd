@@ -29,9 +29,7 @@ date-format: 'MMMM [de] YYYY'
 
 ## Sobre o material
 
-
-- Parte do material adaptado do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
-
+-   Parte do material adaptado do curso de [Web Scraping](https://curso-r.com/cursos/web-scraping/), da [Curso-R](https://curso-r.com), ministrado por [Julio Trecenti](https://br.linkedin.com/in/jtrecenti).
 
 ## Pré-requisitos
 
@@ -46,17 +44,27 @@ date-format: 'MMMM [de] YYYY'
 
 -   Instalar pacotes:
 
--   `{httr}` (para acessar a web).
-
--   `{xml2}` e `{rvest}` (para extrair dados de arquivos HTML).
-
--   `{tidyverse}` (para trabalhar com os dados extraídos).
-
 ```{r, eval=FALSE, echo = TRUE}
 install.packages(c(
-  "tidyverse", "httr", "rvest", "xml2", "fs", "janitor", "cli"
+  # Pacotes de limpeza, manipulação, iteração
+  "tidyverse",  "fs", "janitor", "cli", 
+  
+  # Pacotes usados para acessar a web e extrair informações do HTML
+  "httr", "rvest", "xml2",
+  
+  # Pacotes necessários para os exemplos de HTML dinâmico
+  "webdriver", "RSelenium"
 ))
 ```
+
+
+Para os exemplos de HTML dinâmico, instalar também o `phantomjs`:
+```{r}
+#| eval: false
+#| echo: true
+webdriver::install_phantomjs()
+```
+
 
 ## Pré-requisitos
 
@@ -104,7 +112,6 @@ O curso abordará conceitos, como:
 
 -   As informações do site não são públicas.
 
-
 ## Cuidados
 
 -   Risco de derrubar ou comprometer a estabilidade do site.
@@ -113,20 +120,15 @@ O curso abordará conceitos, como:
 
 ![](img/spiderman.gif){fig-align="center"}
 
-
-
 ## Fluxo do Web Scraping
 
 ![](img/cycle.png){fig-align="center"}
-
-
 
 ## Tipos de problemas de raspagem de dados
 
 -   **APIs disponíveis**: O site fornece uma forma estruturada e documentada para acessar as páginas (com ou sem necessidade de fazer login).
 
 -   **APIs escondidas**: O site não fornece uma forma estruturada e documentada para acessar as páginas, mas internamente é alimentado por uma API não documentada, que podemos descobrir e usar.
-
 
 ## Tipos de problemas de raspagem de dados
 
@@ -135,8 +137,6 @@ O curso abordará conceitos, como:
 -   **HTML dinâmico**: O site não fornece uma forma estruturada de acessar as páginas, e as páginas são geradas de forma dinâmica.
 
 -   ...
-
-
 
 ## Tipos de problemas de raspagem de dados
 
