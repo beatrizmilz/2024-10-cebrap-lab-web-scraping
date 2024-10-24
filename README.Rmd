@@ -64,12 +64,28 @@ O curso tem como **público alvo**  pessoasque tenham interesse em obter dados a
 
 ### Scripts pós aula
 
-Em breve!
+```{r}
+#| echo: false
+tab <- list.files("script-pos-aula/") |>
+  tibble::as_tibble() |>
+  dplyr::mutate(
+    link = glue::glue(
+      "[{value}](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/script-pos-aula/{value})"
+    )
+  ) |>
+  dplyr::select(link)
+
+tab |>
+  knitr::kable()
+```
 
 
 ### Exercícios
 
-Em breve!
+- [Exercício para terça-feira](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/exercicios/01-exercicios-terca.R)
+
+- [Exercício para quinta-feira](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/exercicios/02-exercicios-quinta.R)
+
 
 
 ## Materiais para revisão do conteúdo básico

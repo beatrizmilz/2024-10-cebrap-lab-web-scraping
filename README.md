@@ -69,11 +69,23 @@ tidyverse).
 
 ### Scripts pós aula
 
-Em breve!
+| link |
+|:---|
+| [01-api-documentada.R](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/script-pos-aula/01-api-documentada.R) |
+| [02-api-escondida.R](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/script-pos-aula/02-api-escondida.R) |
+| [03-api-autenticacao.R](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/script-pos-aula/03-api-autenticacao.R) |
+| [04-iteracao.R](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/script-pos-aula/04-iteracao.R) |
+| [05-html-exemplo.R](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/script-pos-aula/05-html-exemplo.R) |
+| [06-html-chancedegol.R](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/script-pos-aula/06-html-chancedegol.R) |
+| [07-html-wiki.R](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/script-pos-aula/07-html-wiki.R) |
 
 ### Exercícios
 
-Em breve!
+- [Exercício para
+  terça-feira](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/exercicios/01-exercicios-terca.R)
+
+- [Exercício para
+  quinta-feira](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/exercicios/02-exercicios-quinta.R)
 
 ## Materiais para revisão do conteúdo básico
 
