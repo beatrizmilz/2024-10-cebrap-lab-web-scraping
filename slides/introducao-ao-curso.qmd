@@ -54,7 +54,7 @@ date-format: 'MMMM [de] YYYY'
 
 ```{r, eval=FALSE, echo = TRUE}
 install.packages(c(
-  "tidyverse", "httr", "rvest", "xml2",
+  "tidyverse", "httr", "rvest", "xml2", "fs", "janitor", "cli"
 ))
 ```
 
