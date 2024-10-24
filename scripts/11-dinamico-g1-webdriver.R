@@ -113,9 +113,9 @@ imagens_noticias |>
 # Salvar o HTML
 html <- ses$getSource()
 
-readr::write_file(html, "g1_home.html")
+readr::write_file(html, "html/g1_home.html")
 
 
 # tentando extrair do HTML
-html_g1 <- read_html("g1_home.html")
+html_g1 <- read_html("html/g1_home.html")
 posts <- html_elements(html_g1, xpath = "//div[@class='feed-post-body']") 
