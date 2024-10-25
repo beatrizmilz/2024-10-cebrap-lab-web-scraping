@@ -53,16 +53,8 @@ install.packages(c(
   "httr", "rvest", "xml2",
   
   # Pacotes necessários para os exemplos de HTML dinâmico
-  "webdriver", "RSelenium"
+   "RSelenium"
 ))
-```
-
-
-Para os exemplos de HTML dinâmico, instalar também o `phantomjs`:
-```{r}
-#| eval: false
-#| echo: true
-webdriver::install_phantomjs()
 ```
 
 

@@ -23,7 +23,7 @@ date-format: 'MMMM [de] YYYY'
 
 - Selenium é uma ferramenta que permite **automatizar um navegador**!
 
-- Suporta alguns _backends_ diferentes: PhantomJS, Firefox, Chrome, etc.
+- Suporta alguns _backends_ diferentes: Firefox, Chrome, etc.
 
 - Diferentemente do web scraping normal, não precisamos nos preocupar com
 nenhuma requisição HTTP
@@ -54,84 +54,13 @@ nenhuma requisição HTTP
   - `RSelenium` tem fama de ser **quebrado**
 
 
-## WebDriver
-
-- Não existe uma diferença real entre "Selenium" e "WebDriver"
-
-  - O nome correto da ferramenta é Selenium WebDriver
-
-- A diferença está no R: pacotes `RSelenium` e `webdriver`
-
-  - `RSelenium` exige certo conhecimento para fazer funcionar
-  
-  - `webdriver` foi feito pela própria RStudio para resolver o problema
-
-- O `webdriver` funciona somente com o PhantomJS, mas isso não é necessariamente
-um problema
-
-- Instalar é fácil, fazer funcionar é mais ainda
-
-
-## PhantomJS
-
-- O PhantomJS é um navegador _headless_ baseado em JavaScript feito especificamente para interação automatizada com páginas da web
-
-```{r}
-#| eval: FALSE
-#| echo: TRUE
-# Carregando o pacote webdriver
-library(webdriver)
-
-# É necessário instalar o PhantomJS
-# webdriver::install_phantomjs()
-
-# Iniciar o PhantomJS
-pjs <- run_phantomjs()
-
-# Iniciar uma sessão usando a porta do PhantomJS
-ses <- Session$new(port = pjs$port)
-```
-
-
-## Exemplo mínimo
-
-
-```{r }
-#| eval: FALSE
-#| echo: TRUE
-# Indicando a URL que queremos acessar
-ses$go("https://google.com")
-# Captura de tela, salvando em um arquivo
-ses$takeScreenshot(file = "screenshot_google.png")
-```
-
-Arquivo salvo:
-![](screenshot_google.png)
-
-
-## Métodos usados na sessão
-
-- `ses$findElement()` retorna um elemento da página dado um seletor ou XPath para o mesmo
-
-  - É uma função embutida na sessão (assim como `takeScreenshot()` e `go()`)
-
-## Métodos usados nos elementos
-
-- `elem$click()` clica em um elemento, enquanto `elem$sendKeys()` "envia" uma tecla para o elemento
-
-  - São funções embutidas no elemento retornado por `findElement()`
-
-  - A lista `key` contém uma série de teclas que podem ser enviadas (como ENTER, etc.)
-  
-  - Ao invés de `elem$sendKeys()` podemos usar `elem$setValue()` para escrever um texto no elemento caso isso seja possível
-
 
 
 ## RSelenium
 
-- O PhantomJS, apesar de muito capaz, não consegue exibir todo o conteúdo dinâmico de uma página
 
-- Para solucionar esse problema, é necessário usar o RSelenium com um navegador de verdade como backend
+
+- O RSelenium usa um navegador de verdade como backend
 
   - Nem sempre a instalação do `RSelenium` funciona e em alguns sistemas operacionais há outras dependências
   
@@ -143,7 +72,6 @@ Arquivo salvo:
 
 ## Demonstração
 
-- As funções do `RSelenium` são parecidas com as do `webdriver`, mas envolvem mais esforço
 
 - No exemplo a seguir, o `RSelenium` abre uma aba do Firefox no meu computador e executa todos os comandos ao vivo nela
 

@@ -414,7 +414,7 @@ Beatriz Milz
 <h1>O que é Selenium?</h1>
 <ul>
 <li><p>Selenium é uma ferramenta que permite <strong>automatizar um navegador</strong>!</p></li>
-<li><p>Suporta alguns <em>backends</em> diferentes: PhantomJS, Firefox, Chrome, etc.</p></li>
+<li><p>Suporta alguns <em>backends</em> diferentes: Firefox, Chrome, etc.</p></li>
 <li><p>Diferentemente do web scraping normal, não precisamos nos preocupar com nenhuma requisição HTTP</p>
 <ul>
 <li><p>O Selenium literalmente cria um navegador invisível para o qual você pode passar as <strong>ações</strong> a serem tomadas</p></li>
@@ -440,75 +440,9 @@ Beatriz Milz
 </ul>
 </section>
 <section class="slide level2">
-<h2>WebDriver</h2>
-<ul>
-<li><p>Não existe uma diferença real entre “Selenium” e “WebDriver”</p>
-<ul>
-<li>O nome correto da ferramenta é Selenium WebDriver</li>
-</ul></li>
-<li><p>A diferença está no R: pacotes <code>RSelenium</code> e <code>webdriver</code></p>
-<ul>
-<li><p><code>RSelenium</code> exige certo conhecimento para fazer funcionar</p></li>
-<li><p><code>webdriver</code> foi feito pela própria RStudio para resolver o problema</p></li>
-</ul></li>
-<li><p>O <code>webdriver</code> funciona somente com o PhantomJS, mas isso não é necessariamente um problema</p></li>
-<li><p>Instalar é fácil, fazer funcionar é mais ainda</p></li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>PhantomJS</h2>
-<ul>
-<li>O PhantomJS é um navegador <em>headless</em> baseado em JavaScript feito especificamente para interação automatizada com páginas da web</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Carregando o pacote webdriver</span></span>
-<span id="cb1-2"><a href=""></a><span class="fu">library</span>(webdriver)</span>
-<span id="cb1-3"><a href=""></a></span>
-<span id="cb1-4"><a href=""></a><span class="co"># É necessário instalar o PhantomJS</span></span>
-<span id="cb1-5"><a href=""></a><span class="co"># webdriver::install_phantomjs()</span></span>
-<span id="cb1-6"><a href=""></a></span>
-<span id="cb1-7"><a href=""></a><span class="co"># Iniciar o PhantomJS</span></span>
-<span id="cb1-8"><a href=""></a>pjs <span class="ot">&lt;-</span> <span class="fu">run_phantomjs</span>()</span>
-<span id="cb1-9"><a href=""></a></span>
-<span id="cb1-10"><a href=""></a><span class="co"># Iniciar uma sessão usando a porta do PhantomJS</span></span>
-<span id="cb1-11"><a href=""></a>ses <span class="ot">&lt;-</span> Session<span class="sc">$</span><span class="fu">new</span>(<span class="at">port =</span> pjs<span class="sc">$</span>port)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-<h2>Exemplo mínimo</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Indicando a URL que queremos acessar</span></span>
-<span id="cb2-2"><a href=""></a>ses<span class="sc">$</span><span class="fu">go</span>(<span class="st">"https://google.com"</span>)</span>
-<span id="cb2-3"><a href=""></a><span class="co"># Captura de tela, salvando em um arquivo</span></span>
-<span id="cb2-4"><a href=""></a>ses<span class="sc">$</span><span class="fu">takeScreenshot</span>(<span class="at">file =</span> <span class="st">"screenshot_google.png"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Arquivo salvo: <img data-src="screenshot_google.png"></p>
-</section>
-<section class="slide level2">
-<h2>Métodos usados na sessão</h2>
-<ul>
-<li><p><code>ses$findElement()</code> retorna um elemento da página dado um seletor ou XPath para o mesmo</p>
-<ul>
-<li>É uma função embutida na sessão (assim como <code>takeScreenshot()</code> e <code>go()</code>)</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>Métodos usados nos elementos</h2>
-<ul>
-<li><p><code>elem$click()</code> clica em um elemento, enquanto <code>elem$sendKeys()</code> “envia” uma tecla para o elemento</p>
-<ul>
-<li><p>São funções embutidas no elemento retornado por <code>findElement()</code></p></li>
-<li><p>A lista <code>key</code> contém uma série de teclas que podem ser enviadas (como ENTER, etc.)</p></li>
-<li><p>Ao invés de <code>elem$sendKeys()</code> podemos usar <code>elem$setValue()</code> para escrever um texto no elemento caso isso seja possível</p></li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
 <h2>RSelenium</h2>
 <ul>
-<li><p>O PhantomJS, apesar de muito capaz, não consegue exibir todo o conteúdo dinâmico de uma página</p></li>
-<li><p>Para solucionar esse problema, é necessário usar o RSelenium com um navegador de verdade como backend</p>
+<li><p>O RSelenium usa um navegador de verdade como backend</p>
 <ul>
 <li><p>Nem sempre a instalação do <code>RSelenium</code> funciona e em alguns sistemas operacionais há outras dependências</p></li>
 <li><p>A documentação do <code>RSelenium</code> é bagunçada, dificultando qualquer pesquisa</p></li>
@@ -519,34 +453,33 @@ Beatriz Milz
 <section class="slide level2">
 <h2>Demonstração</h2>
 <ul>
-<li><p>As funções do <code>RSelenium</code> são parecidas com as do <code>webdriver</code>, mas envolvem mais esforço</p></li>
-<li><p>No exemplo a seguir, o <code>RSelenium</code> abre uma aba do Firefox no meu computador e executa todos os comandos ao vivo nela</p></li>
+<li>No exemplo a seguir, o <code>RSelenium</code> abre uma aba do Firefox no meu computador e executa todos os comandos ao vivo nela</li>
 </ul>
 </section>
 <section class="slide level2">
 <h2>Demonstração</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Carregar o pacote RSelenium</span></span>
-<span id="cb3-2"><a href=""></a><span class="fu">library</span>(RSelenium)</span>
-<span id="cb3-3"><a href=""></a></span>
-<span id="cb3-4"><a href=""></a><span class="co"># Iniciar o servidor do RSelenium. Ele irá abrir uma janela do Firefox</span></span>
-<span id="cb3-5"><a href=""></a><span class="co"># Essa etapa pode demorar um pouco</span></span>
-<span id="cb3-6"><a href=""></a>drv <span class="ot">&lt;-</span> <span class="fu">rsDriver</span>(<span class="at">browser =</span> <span class="st">"firefox"</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">chromever =</span> <span class="cn">NULL</span>)</span>
-<span id="cb3-7"><a href=""></a></span>
-<span id="cb3-8"><a href=""></a><span class="co"># Acessando uma URL</span></span>
-<span id="cb3-9"><a href=""></a>drv<span class="sc">$</span>client<span class="sc">$</span><span class="fu">navigate</span>(<span class="st">"https://google.com"</span>)</span>
-<span id="cb3-10"><a href=""></a></span>
-<span id="cb3-11"><a href=""></a><span class="co"># Procurando um elemento: no caso, o campo de busca</span></span>
-<span id="cb3-12"><a href=""></a>elem <span class="ot">&lt;-</span> drv<span class="sc">$</span>client<span class="sc">$</span><span class="fu">findElement</span>(<span class="st">"xpath"</span>, <span class="st">"//textarea[@name='q']"</span>)</span>
-<span id="cb3-13"><a href=""></a></span>
-<span id="cb3-14"><a href=""></a><span class="co"># Escrevendo no campo de busca</span></span>
-<span id="cb3-15"><a href=""></a>elem<span class="sc">$</span><span class="fu">sendKeysToElement</span>(<span class="fu">list</span>(<span class="st">"Beatriz Milz"</span>, <span class="at">key =</span> <span class="st">"enter"</span>))</span>
-<span id="cb3-16"><a href=""></a></span>
-<span id="cb3-17"><a href=""></a><span class="co"># Esperar um pouco para a página carregar</span></span>
-<span id="cb3-18"><a href=""></a><span class="fu">Sys.sleep</span>(<span class="dv">2</span>)</span>
-<span id="cb3-19"><a href=""></a></span>
-<span id="cb3-20"><a href=""></a><span class="co"># Capturar a tela</span></span>
-<span id="cb3-21"><a href=""></a>drv<span class="sc">$</span>client<span class="sc">$</span><span class="fu">screenshot</span>(<span class="at">file =</span> <span class="st">"screenshot_selenium.png"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Carregar o pacote RSelenium</span></span>
+<span id="cb1-2"><a href=""></a><span class="fu">library</span>(RSelenium)</span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a><span class="co"># Iniciar o servidor do RSelenium. Ele irá abrir uma janela do Firefox</span></span>
+<span id="cb1-5"><a href=""></a><span class="co"># Essa etapa pode demorar um pouco</span></span>
+<span id="cb1-6"><a href=""></a>drv <span class="ot">&lt;-</span> <span class="fu">rsDriver</span>(<span class="at">browser =</span> <span class="st">"firefox"</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">chromever =</span> <span class="cn">NULL</span>)</span>
+<span id="cb1-7"><a href=""></a></span>
+<span id="cb1-8"><a href=""></a><span class="co"># Acessando uma URL</span></span>
+<span id="cb1-9"><a href=""></a>drv<span class="sc">$</span>client<span class="sc">$</span><span class="fu">navigate</span>(<span class="st">"https://google.com"</span>)</span>
+<span id="cb1-10"><a href=""></a></span>
+<span id="cb1-11"><a href=""></a><span class="co"># Procurando um elemento: no caso, o campo de busca</span></span>
+<span id="cb1-12"><a href=""></a>elem <span class="ot">&lt;-</span> drv<span class="sc">$</span>client<span class="sc">$</span><span class="fu">findElement</span>(<span class="st">"xpath"</span>, <span class="st">"//textarea[@name='q']"</span>)</span>
+<span id="cb1-13"><a href=""></a></span>
+<span id="cb1-14"><a href=""></a><span class="co"># Escrevendo no campo de busca</span></span>
+<span id="cb1-15"><a href=""></a>elem<span class="sc">$</span><span class="fu">sendKeysToElement</span>(<span class="fu">list</span>(<span class="st">"Beatriz Milz"</span>, <span class="at">key =</span> <span class="st">"enter"</span>))</span>
+<span id="cb1-16"><a href=""></a></span>
+<span id="cb1-17"><a href=""></a><span class="co"># Esperar um pouco para a página carregar</span></span>
+<span id="cb1-18"><a href=""></a><span class="fu">Sys.sleep</span>(<span class="dv">2</span>)</span>
+<span id="cb1-19"><a href=""></a></span>
+<span id="cb1-20"><a href=""></a><span class="co"># Capturar a tela</span></span>
+<span id="cb1-21"><a href=""></a>drv<span class="sc">$</span>client<span class="sc">$</span><span class="fu">screenshot</span>(<span class="at">file =</span> <span class="st">"screenshot_selenium.png"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
