@@ -88,6 +88,16 @@ tab |>
 
 - [Exercício para quinta-feira](https://github.com/beatrizmilz/2024-10-cebrap-lab-web-scraping/blob/main/exercicios/02-exercicios-quinta.R)
 
+## Links citados em aula
+
+```{r}
+#| echo: false
+readr::read_csv2("links.csv") |> 
+  dplyr::mutate(Material = glue::glue("[{Material}]({Link})")) |>   dplyr::select(-Link) |> 
+  knitr::kable()
+```
+
+
 
 
 ## Materiais para revisão do conteúdo básico
